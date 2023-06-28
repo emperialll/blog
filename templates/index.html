@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flask Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to My Flask Blog!</h1>
+    <a href="./add">
+       <button type="button">Add New Article</button>
+    </a>
+    {% for article in posts: %}
+        <div class="post">
+            <h2>{{article['title']}}</h2>
+            <p><em>Written by {{article['author']}}</em></p>
+            <p>{{article['content']}}</p>
+            <form action="/delete/{{article['id']}}" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button class="delete-button"
+                        type="submit">Delete Post</button>
+            </form>
+            <form action="/update/{{article['id']}}" method="get">
+                <input type="hidden" name="_method" value="submit">
+                <button class="update-button"
+                        type="submit" value="submit">Update Post</button>
+            </form>
+            <form action="/like/{{article['id']}}" method="post">
+                <input type="hidden" name="_method" value="submit">
+                <button class="btn btn-counter multiple-count"
+                        data-count="{{article['like']}}"
+                        type="submit" value="submit">
+                        <span>&#x2764;</span>
+                </button>
+            </form>
+        </div>
+    {% endfor %}
+</body>
+</html>

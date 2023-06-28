@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Article Submission Form</title>
+  <link rel="stylesheet" type="text/css" href="../static/add.css">
+</head>
+<body>
+  <h1>Article Submission Form</h1>
+  <form action="/add" method="post">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author" required>
+
+    <label for="content">Content:</label>
+    <textarea id="content" name="content" rows="8" required></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
